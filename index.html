@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/styles.css" rel="stylesheet">
+    <title>Neighborhood Map: Regina, Saskatchewan</title>
+</head>
+
+<body>
+  <div id="map"></div>
+  <div class="searchContainer">
+    <input type="search" placeholder="Where's your hood at?" data-bind="textInput: userInput, event: {keyup: filterMarkers}" class="search">
+  </div>
+    <ul class="list-view" data-bind="foreach: visiblePlaces">
+        <li data-bind="text: locationName, click: function(){listClick($data)}"></li>
+    </ul>
+
+    <script type="text/javascript" src="js/lib/knockout-3.4.2.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/lib/jquery-3.2.1.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV6dN-YvGnPuIEKcZWbRNNTPXZaywVxY4&callback=initMap" async defer onerror="mapError()"></script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+* {box-sizing: border-box;}
+
+html,
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background-color: #282C34;
+}
+
+#map {
+	height: 100%;
+	width: 100%;
+}
+
+.searchContainer {
+	position: fixed;
+	top: 30px;
+	left: 80px;
+	height: 40px;
+	width: 200px;
+	font-size: 20px;
+}
+
+.search {
+	position: relative;
+	width: 300px;
+	padding-left: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background: white;
+	border: 15px solid #3F74BA;
+	border-radius: 0px;
+	font-size: 15px;
+	color: black;
+}
+
+.list-view {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	width: 100px;
+	background-color: #fff;
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	margin-left: 20px;
+	padding: 2px 0;
+	font: 12px sans-serif;
+}
