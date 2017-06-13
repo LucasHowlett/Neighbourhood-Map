@@ -68,6 +68,10 @@ body {
 	background-color: #f8f8f8;
 }
 
+.imageList {
+	min-height: 100px;
+}
+
 
 @media (max-width: 800px) {
 	.searchContainer {

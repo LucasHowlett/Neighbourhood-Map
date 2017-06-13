@@ -10,14 +10,14 @@
 </head>
 
 <body>
-  <div id="map"></div>
-  <div class="searchContainer">
-    <input type="search" placeholder="Where's your hood at?" data-bind="textInput: userInput, event: {keyup: filterMarkers}" class="search">
-  </div>
-    <ul class="list-view" data-bind="foreach: visiblePlaces">
-        <li data-bind="text: locationName, click: function(){listClick($data)}"></li>
-    </ul>
+    <div id="map"></div>
+    <div class="searchContainer">
 
+        <input class="search" data-bind="textInput: filterSearch, valueUpdate:'afterkeydown'" name="filter" type="text" placeholder="Where's your pizza at?">
+    </div>
+    <ul class="list-view" data-bind="foreach: filteredLocationsData">
+        <li data-bind="text: name, attr: { id: id }, click: chooseLocationsData"></li>
+    </ul>
     <script type="text/javascript" src="js/lib/knockout-3.4.2.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/lib/jquery-3.2.1.min.js"></script>
