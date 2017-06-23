@@ -111,16 +111,17 @@ var viewModel = function() {
 
     // Handles the location options displayed in the view list //
     self.locationData = ko.observableArray();
-    // Handles the search filter text field
+    // Handles the search filter text field, listening to the keys typed in the filter //
     self.filterSearch = ko.observable('');
 
-// Handles displayed markers and options available in list view //
+// Handles displayed markers and options available in //
+// list view, make lowercase to compare the strings //
 self.filteredLocationsData =  ko.computed(function() {
     return self.locationData().filter(function(ld) {
         lowerCaseName = ld.name.toLowerCase();
-        var isSame = lowerCaseName.indexOf(self.filterSearch().toLowerCase()) !== -1;
-        ld.marker.setVisible(isSame);
-        return isSame;
+        var isMatched = lowerCaseName.indexOf(self.filterSearch().toLowerCase()) !== -1;
+        ld.marker.setVisible(isMatched);
+        return isMatched;
     }, this);
 }, this);
 
@@ -132,14 +133,14 @@ map = new google.maps.Map(document.getElementById('map'), {
 
 // Loop over array and handles setting markers //
 for (var i = 0, wid = locationsData.length; i < wid; i++) {
-    // Set id value to i //
+    // Set id value to i, on page load loops through list of array //
     locationsData[i].id = i;
     var ld = new mapModel(locationsData[i]);
     self.locationData.push(ld);
 }
 
 
-// Click on the link //
+// Click on the link - sends an event that the list option has been clicked //
 chooseLocationsData = function(link) {
     google.maps.event.trigger(link.marker, 'click');
   };
@@ -210,7 +211,8 @@ var mapModel = function(ldData) {
         content: ldData.altDescription,
     });
 
-    // Handles the listener on the map marker which makes it animate bounce //
+    // Handles the listener on the map marker which makes it animate bounce,
+    // hears that a list item has been clicked and then present the info window //
     self.marker.addListener('click', function() {
         var bouncingMarker = this
         bouncingMarker.setAnimation(google.maps.Animation.BOUNCE);
